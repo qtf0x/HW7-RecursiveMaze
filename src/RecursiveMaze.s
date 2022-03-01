@@ -4,8 +4,6 @@
 #
 #    @author Vincent Marias
 
-.data
-
 .text
     # Arguments
     #     a2: address of the grid
