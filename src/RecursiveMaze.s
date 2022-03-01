@@ -25,7 +25,7 @@
 
         # include current cell in route
         sw a2, 4(sp)                     # save a2
-        sw a3, 8(sp)                     # save a3
+        sw a3, 0(sp)                     # save a3
 
         mul t0, a6, a3                   # t0 = curY * xMax
         add t0, t0, a5                   # t0 += curX
@@ -37,7 +37,7 @@
 
         jal ra, addValueToStack
 
-        lw a3, 8(sp)                     # restore a3
+        lw a3, 0(sp)                     # restore a3
         lw a2, 4(sp)                     # restore a2
 
         addi a7, a7, 1                   # stackLen++
