@@ -27,8 +27,14 @@
 
         # include current cell in route
 
+        addi a7, a7, 1                   # stackLen++
 
-        # base case 2 (if the laste cell is reached)
+        # base case 2 (if the last cell is reached)
+        addi t0, a3, -1
+        bne a5, t0, recurseDown
+        addi t0, a4, -1
+        bne a6, t0, recurseDown
+
 
 
         # move down
@@ -42,7 +48,7 @@
         # move diagonally
         recurseDiagonally:
 
-        
+
 
         printPaths_done:
             lw ra, 4(sp)        # restore ra
