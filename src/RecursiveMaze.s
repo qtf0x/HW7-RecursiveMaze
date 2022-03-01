@@ -60,16 +60,44 @@
 
         # move down
         recurseDown:
-        
+            addi t0, a6, 1              # t0 = curY + 1
+            bge t0, a4, recurseRight    # skip if curY + 1 >= yMax
+
+            sw a6, 4(sp)                # save a6
+
+            addi a6, a6, 1              # a6++
+            jal ra, printPaths          # recursive call
+
+            lw a6, 4(sp)                # restore a6
         
         # move right
         recurseRight:
+            addi t0, a5, 1                   # t0 = curX + 1
+            bge t0, a3, recurseDiagonally    # skip if curX + 1 >= xMax
 
+            sw a5, 4(sp)                     # save a5
+
+            addi a5, a5, 1                   # a5++
+            jal ra, printPaths               # recursive call
+
+            lw a5, 4(sp)                     # restore a5
 
         # move diagonally
         recurseDiagonally:
+            addi t0, a5, 1                 # t0 = curX + 1
+            bge t0, a3, printPaths_done    # skip if curX + 1 >= xMax
+            addi t0, a6, 1                 # t0 = curY + 1
+            bge t0, a4, printPaths_done    # skip if curY + 1 >= yMax
+            
+            sw a5, 4(sp)                   # save a5
+            sw a6, 0(sp)                   # save a6
 
+            addi a5, a5, 1                 # a5++
+            addi a6, a6, 1                 # a6++
+            jal ra, printPaths             # recursive call
 
+            lw a6, 0(sp)                   # restore a6
+            lw a5, 4(sp)                   # restore a5
 
         printPaths_done:
             lw ra, 8(sp)        # restore ra

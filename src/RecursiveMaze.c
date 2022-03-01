@@ -37,7 +37,7 @@ void printPaths(int* grid, int xMax, int yMax, int curX, int curY,
     }
 
     // move down
-    if (curY +1 < yMax) {
+    if (curY + 1 < yMax) {
         printPaths(grid, xMax, yMax, curX, curY + 1, stackLen);
     }
 
