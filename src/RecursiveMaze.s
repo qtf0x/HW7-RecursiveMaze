@@ -18,14 +18,29 @@
     #     None
     .globl printPaths
     printPaths:
-        addi sp, sp, -4    # space for 1 word
-        sw ra, 4(sp)       # save return address
+        addi sp, sp, -12    # space for 3 words
+        sw ra, 8(sp)        # save return address
 
         # base case 1
         bge zero, a3, printPaths_done    # return if xMax <= 0
         bge zero, a4, printPaths_done    # return if yMax <= 0
 
         # include current cell in route
+        sw a2, 4(sp)                     # save a2
+        sw a3, 8(sp)                     # save a3
+
+        mul t0, a6, a3                   # t0 = curY * xMax
+        add t0, t0, a5                   # t0 += curX
+        slli t0, t0, 2                   # t0 *= 4
+        add t0, t0, a2                   # t0 += grid
+        lw a3, 0(t0)                     # a3 = *(grid + t0)
+
+        add a2, zero, a7                 # a2 = stackLen
+
+        jal ra, addValueToStack
+
+        lw a3, 8(sp)                     # restore a3
+        lw a2, 4(sp)                     # restore a2
 
         addi a7, a7, 1                   # stackLen++
 
@@ -51,7 +66,7 @@
 
 
         printPaths_done:
-            lw ra, 4(sp)        # restore ra
-            addi sp, sp, 4      # pop stack frame
+            lw ra, 8(sp)        # restore ra
+            addi sp, sp, 12      # pop stack frame
 
             jalr zero, ra, 0    # return to caller
