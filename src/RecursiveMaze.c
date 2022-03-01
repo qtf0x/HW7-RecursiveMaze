@@ -8,9 +8,18 @@
 
 #include <stdio.h>
 
-void addValueToStack(int numElements, int value);
+int STACK[sizeof(int) * 200];
 
-void printStack(int numElements);
+void addValueToStack(int numElements, int value) {
+    *(STACK + numElements) = value;
+}
+
+void printStack(int numElements) {
+    for (int i = 0; i < numElements; ++i) {
+        printf("%d ", *(STACK + i));
+    }
+    printf("\n");
+}
 
 void printPaths(int* grid, int xMax, int yMax, int curX, int curY,
                 int stackLen) {
