@@ -18,16 +18,18 @@ void printPaths(int* grid, int xMax, int yMax, int curX, int curY,
         return;
     }
 
-    // move down if (curY + 1 < yMax) {
-    printPaths(grid, xMax, yMax, curX, curY + 1, stackLen);
-}
+    // move down
+    if (curY + 1 < yMax) {
+        printPaths(grid, xMax, yMax, curX, curY + 1, stackLen);
+    }
 
-// move right
-if (curX + 1 < xMax) {
-    printPaths(grid, xMax, yMax, curX + 1, curY, stackLen);
-}
+    // move right
+    if (curX + 1 < xMax) {
+        printPaths(grid, xMax, yMax, curX + 1, curY, stackLen);
+    }
 
-// move diagonally
-if (curY + 1 < yMax && curX + 1 < xMax) {
-    printPaths(grid, xMax, yMax, curX + 1, curY + 1, stackLen);
+    // move diagonally
+    if (curY + 1 < yMax && curX + 1 < xMax) {
+        printPaths(grid, xMax, yMax, curX + 1, curY + 1, stackLen);
+    }
 }
