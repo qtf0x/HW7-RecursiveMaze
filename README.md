@@ -8,7 +8,47 @@
 2) Pseudocode (in C/Java/Python/etc) for your implementation [yes it should also be recursive].
 
     ```c
-    
+    void addValueToStack(int numElements, int value) {
+        *(STACK + numElements) = value;
+    }
+
+    void printStack(int numElements) {
+        for (int i = 0; i < numElements; ++i) {
+            printf("%d ", *(STACK + i));
+        }
+        printf("\n");
+    }
+
+    void printPaths(int* grid, int xMax, int yMax, int curX, int curY,
+                    int stackLen) {
+        // base case 1
+        if (xMax <= 0 || yMax <= 0) { return; }
+
+        // include current cell in route
+        addValueToStack(stackLen, *(grid + (curX + curY * xMax)));
+        stackLen++;
+
+        // base case 2 (if the last cell is reached)
+        if (curX == xMax - 1 && curY == yMax - 1) {
+            printStack(stackLen);
+            return;
+        }
+
+        // move down
+        if (curY +1 < yMax) {
+            printPaths(grid, xMax, yMax, curX, curY + 1, stackLen);
+        }
+
+        // move right
+        if (curX + 1 < xMax) {
+            printPaths(grid, xMax, yMax, curX + 1, curY, stackLen);
+        }
+
+        // move diagonally
+        if (curX + 1 < xMax && curY + 1 < yMax) {
+            printPaths(grid, xMax, yMax, curX + 1, curY + 1, stackLen);
+        }
+    }
     ```
 
 3) Describe the challenges you encountered and how you surmounted them.
