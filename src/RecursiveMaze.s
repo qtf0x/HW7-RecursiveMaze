@@ -49,12 +49,15 @@
         bne a6, t0, recurseDown
 
         sw a2, 4(sp)                     # save a2
+        sw a7, 0(sp)
         add a2, zero, a7                 # a2 = stackLen
 
         jal ra, printStack
-        jal zero, printPaths_done        # return
-
+        
+        lw a7, 0(sp)
         lw a2, 4(sp)                     # restore a2
+        
+        jal zero, printPaths_done        # return
 
         # move down
         recurseDown:
