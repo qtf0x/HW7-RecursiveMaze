@@ -27,7 +27,7 @@ void printPaths(int* grid, int xMax, int yMax, int curX, int curY,
     if (xMax <= 0 || yMax <= 0) { return; }
 
     // include current cell in route
-    addValueToStack(stackLen, *(grid + (curX + curY * xMax)));
+    addValueToStack(stackLen, *(grid + (curX + (curY * xMax))));
     stackLen++;
 
     // base case 2 (if the last cell is reached)
