@@ -1,7 +1,7 @@
 /*
     RecursiveMaze.c
 
-
+    Recursive implementation for depth first search algorithm.
 
     @author: Vincent Marias
 */
