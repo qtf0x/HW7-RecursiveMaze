@@ -53,15 +53,17 @@
 
 3) Describe the challenges you encountered and how you surmounted them.
 
-- 
+- The only real challege I encountered was clearing the stack. I think that's the problem, anyway; it's still doesn't work. The C code works fine, and I've double, triple, and quadruple-checked that the RISC-V instructions do exactly the same thing. But the stack still grows incorrectly when I run the RISC-V. You'll see what I mean when you run it.
+
+- Of course, the other big challenge was my own time-management skills, as this is now being turned in a week late. Sorry.
 
 1) What did you like about the assignment?
 
-- 
+- I liked getting to use a recursive searching algorithm at such a low level. Surprisingly, I understand recursion better now because of this class than I ever have.
 
 1) How long did you spend working on this assignment?
 
-    
+    ~4 hours
 
 2) A description of any features you added for extra credit (if any)
 
