@@ -24,7 +24,8 @@ void printStack(int numElements) {
 void printPaths(int* grid, int xMax, int yMax, int curX, int curY,
                 int stackLen) {
     // base case 1
-    if (xMax <= 0 || yMax <= 0) { return; }
+    if (xMax <= 0 || yMax <= 0)
+        return;
 
     // include current cell in route
     addValueToStack(stackLen, *(grid + (curX + (curY * xMax))));
@@ -37,26 +38,23 @@ void printPaths(int* grid, int xMax, int yMax, int curX, int curY,
     }
 
     // move down
-    if (curY + 1 < yMax) {
+    if (curY + 1 < yMax)
         printPaths(grid, xMax, yMax, curX, curY + 1, stackLen);
-    }
 
     // move right
-    if (curX + 1 < xMax) {
+    if (curX + 1 < xMax)
         printPaths(grid, xMax, yMax, curX + 1, curY, stackLen);
-    }
 
     // move diagonally
-    if (curX + 1 < xMax && curY + 1 < yMax) {
+    if (curX + 1 < xMax && curY + 1 < yMax)
         printPaths(grid, xMax, yMax, curX + 1, curY + 1, stackLen);
-    }
 }
 
 int main() {
     char arrayNumberPrompt[] = "Enter a number to add to the array: ";
     char xPrompt[] = "X size: ";
     char yPrompt[] = "Y size: ";
-    
+
     int grid[sizeof(int) * 200];
     int nextInput = 0;
     int endIndex = 0;
